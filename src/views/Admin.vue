@@ -126,10 +126,11 @@
                             </li>
 
                             <li>
+                                <a href=# @click="logout()"></a>
     
-                                <router-link to="/admin/Logout">
+                                <router-link to="/">
     
-                                    <i class="fa fa-calendar"></i>
+                                    <i class="fa fa-power-off"></i>
     
                                     <span class="menu-text">Logout</span>
     
@@ -171,12 +172,25 @@
 <script>
 // @ is an alias to /src
 import Hero from "@/components/Hero.vue";
+import {fb} from '../firebase';
 
 export default {
     name: "home",
     components: {
         Hero
+    },
+methods:{
+    logout(){
+        fb.auth().signOut()
+        .then(() =>{
+            this.$router.replace('/');
+            location.reload();
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
+}
 };
 </script>
 

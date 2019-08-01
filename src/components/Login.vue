@@ -94,6 +94,8 @@ export default {
       fb.auth().createUserWithEmailAndPassword(this.email, this.password)
 
       .then((user) => {
+        this.$router.replace('Admin');
+        location.reload();
         $('#login').modal('hide')
       })
 
