@@ -143,7 +143,7 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-import { fb, db} from '../firebase';
+import { fb, db } from '../firebase';
 
 export default {
   name: "Products",
@@ -288,26 +288,34 @@ export default {
         
     },
     readData(){
-
       
-     
+    db.collection("products").get().then((querySnapshot) => {
+
+      querySnapshot.forEach((doc) => {
+
+      this.products.push(doc.data());
+
+      });
+    });
+
     },
-    addProduct(){
-      
-      this.$firestore.products.add(this.product);
-      
-          Toast.fire({
-            type: 'success',
-            title: 'Product created successfully'
-          })
 
-      $('#product').modal('hide');
+    addProduct(){
+      db.collection("products").add(this.product)
+      .then((docRef) => {
+        this.readData();
+      })
+
+      .catch(function(error) {
+
+        alert("Error");
+
+      });
     }
 
-  
   },
   created(){
-  
+    this.readData();
 
   }
 };
