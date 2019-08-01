@@ -90,13 +90,34 @@ export default {
   },
 
   methods:{
+    login(){
+      fb.auth().signInWithEmailAndPassword(this.email, this.password)
+      .then(() => {
+          this.$router.replace('admin');
+          location.reload();
+          $('#login').modal('hide');
+      })
+      .catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
+          if(errorCode === 'auth/wrong-password') {
+            alert("Wrong password");
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
+
+    },
+
     register(){
       fb.auth().createUserWithEmailAndPassword(this.email, this.password)
 
       .then((user) => {
         this.$router.replace('Admin');
         location.reload();
-        $('#login').modal('hide')
+        $('#login').modal('hide');
       })
 
       .catch(function(error){

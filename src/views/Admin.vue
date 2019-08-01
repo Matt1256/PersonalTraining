@@ -126,15 +126,15 @@
                             </li>
 
                             <li>
-                                <a href=# @click="logout()"></a>
+                                <a href=# @click="logout()">
     
-                                <router-link to="/">
+                                
     
                                     <i class="fa fa-power-off"></i>
     
                                     <span class="menu-text">Logout</span>
-    
-                                </router-link>
+                                    </a>
+                                
     
                             </li>
     

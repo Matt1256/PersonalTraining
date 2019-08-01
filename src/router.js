@@ -65,14 +65,14 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
 
-  const requiresAuth = to.matched.some(x => x.meta.requireAuth)
+  const requireAuth = to.matched.some(x => x.meta.requireAuth)
   const currentUser = fb.auth().currentUser
 
-  if(requiresAuth&& !currentUser) {
+  if(requireAuth && !currentUser) {
 
     next('/')
 
-  } else if (requiresAuth && currentUser) {
+  } else if (requireAuth && currentUser) {
 
     next()
 
