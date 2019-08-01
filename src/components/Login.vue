@@ -97,6 +97,7 @@ export default {
           location.reload();
           $('#login').modal('hide');
       })
+      
       .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;
@@ -115,9 +116,8 @@ export default {
       fb.auth().createUserWithEmailAndPassword(this.email, this.password)
 
       .then((user) => {
-        this.$router.replace('Admin');
-        location.reload();
         $('#login').modal('hide');
+        alert("Thank you for registering");
       })
 
       .catch(function(error){
