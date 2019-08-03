@@ -196,6 +196,7 @@ export default {
        this.product.tags.push(this.tag);
        this.tag = "";
     },
+
     uploadImage(e){
 
       if(e.target.files[0]){
@@ -222,9 +223,6 @@ export default {
 
       }
 
-
-
-
     },
 
     reset(){
@@ -242,27 +240,31 @@ export default {
         this.reset();
         $('#product').modal('show');
     },
+
     updateProduct(){
-        this.$firestore.products.doc(this.product.id).update(this.product);
-          Toast.fire({
-            type: 'success',
-            title: 'Updated  successfully'
+
+        db.collection("products").doc(this.product.id).update(this.product)
+          .then(function() {
+
+           $('#edit').modal('hide');
+
           })
 
            $('#product').modal('hide');
     },
 
     editProduct(product){
+
       this.modal = 'edit';
       this.product = product;
+      this.activeItem = product.id;
       $('#product').modal('show');
     },
 
 
     deleteProduct(doc){
 
-
-      Swal.fire({
+          Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         type: 'warning',
@@ -279,14 +281,13 @@ export default {
             type: 'success',
             title: 'Deleted  successfully'
           })
-
-        
+     
         }
       })
 
 
-        
     },
+
     readData(){
       
     db.collection("products").get().then((querySnapshot) => {
@@ -294,16 +295,20 @@ export default {
       querySnapshot.forEach((doc) => {
 
       this.products.push(doc.data());
-
+ 
       });
     });
 
     },
 
     addProduct(){
+
       db.collection("products").add(this.product)
       .then((docRef) => {
+
         this.readData();
+        $('#product').modal('hide');
+
       })
 
       .catch(function(error) {
