@@ -142,6 +142,7 @@
 </template>
 
 <script>
+
 import { VueEditor } from "vue2-editor";
 import { fb, db } from '../firebase';
 
@@ -210,13 +211,15 @@ export default {
           uploadTask.on('state_changed', (snapshot) => {
             
           }, (error) => {
-            // Handle unsuccessful uploads
+    
           }, () => {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-            
+   
             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+
+              this.product.images = downloadURL;
+
               this.product.images.push(downloadURL);
+
             });
 
           });
@@ -264,7 +267,7 @@ export default {
 
     deleteProduct(doc){
 
-          Swal.fire({
+        Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         type: 'warning',
@@ -272,7 +275,9 @@ export default {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
+
       }).then((result) => {
+
         if (result.value) {
 
           this.$firestore.products.doc(doc.id).delete()
