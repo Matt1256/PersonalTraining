@@ -4,6 +4,8 @@
       <Hero/>
       
       <productsList></productsList>
+
+      <MiniCart></MiniCart>
     
 
   </div>
@@ -13,16 +15,16 @@
 // @ is an alias to /src
 import Hero from "@/components/Hero.vue";
 import Login from "@/components/Login.vue";
-import Products from "@/section/Products.vue";
 import ProductsList from "@/section/ProductList.vue";
+import MiniCart from "@/components/MiniCart.vue";
 
 export default {
   name: "home",
   components: {
     Hero,
     Login, 
-    Products,
-    ProductsList
+    ProductsList,
+    MiniCart
   }
 };
 </script>

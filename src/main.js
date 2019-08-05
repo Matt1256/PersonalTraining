@@ -26,6 +26,8 @@ Vue.component('Navbar', require('./components/navBar.vue').default);
 
 Vue.config.productionTip = false;
 
+import store from './store.js';
+
 let app = '';
 
 fb.auth().onAuthStateChanged(function(user) {
@@ -34,6 +36,7 @@ fb.auth().onAuthStateChanged(function(user) {
 
     new Vue({
       router,
+      store,
       render: h => h(App)
     }).$mount("#app");
 

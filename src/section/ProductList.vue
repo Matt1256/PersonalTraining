@@ -16,16 +16,16 @@
                         <div class="card-body">
                           <div class="d-flex justify-content-between">
                             <h5 class="card-title">{{ product.name }}</h5>
-                            <h5 class="card-priceS">{{ product.price | currency }}</h5>
+                            <h5 class="card-priceS">{{ product.price }}</h5>
 
                           </div>
                            
-                            <add-to-cart 
+                            <AddToCart
                                 :image="getImage(product.images)"
                                 :p-id="product.id"
                                 :price="product.price"
                                 :name="product.name">
-                            </add-to-cart>
+                            </AddToCart>
                         </div>
                     </div>
               </div>
@@ -38,10 +38,13 @@
 
 <script>
 import {db} from '../firebase';
-
+import AddToCart from '../components/AddToCart';
 
 export default {
   name: "ProductsList",
+  components: {
+      AddToCart
+  },
   props: {
     msg: String
   },
