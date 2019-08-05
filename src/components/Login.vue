@@ -73,7 +73,7 @@
 
 <script>
 
-import {fb} from '../firebase';
+import {fb, db} from '../firebase';
 
 export default {
   name: 'Login',
@@ -118,6 +118,11 @@ export default {
       .then((user) => {
         $('#login').modal('hide');
         alert("Thank you for registering");
+
+        db.collection("profiles").doc(user.user.uid).set({
+                        name: this.name
+
+          })
       })
 
       .catch(function(error){

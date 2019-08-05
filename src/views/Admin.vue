@@ -21,13 +21,11 @@
     
                         <div class="user-info">
     
-                            <span class="user-name">Jhon
-    
-                                <strong>Smith</strong>
-    
+                            <span class="user-name">
+                                Name
                             </span>
     
-                            <span class="user-role">Administrator</span>
+                            <span class="user-role">{{email}}</span>
     
                             <span class="user-status">
     
@@ -91,9 +89,17 @@
     
                                 </router-link>
     
+                            </li>
+
+                            <li>
     
+                                <router-link to="/admin/Profile">
     
+                                    <i class="fa fa-user"></i>
     
+                                    <span class="menu-text">Profile</span>
+    
+                                </router-link>
     
                             </li>
     
@@ -175,7 +181,14 @@ import Hero from "@/components/Hero.vue";
 import {fb} from '../firebase';
 
 export default {
-    name: "home",
+    name: "admin",
+    data(){
+        return{
+            name: null,
+            email: null,
+        }
+        
+    },
     components: {
         Hero
     },
@@ -190,7 +203,12 @@ methods:{
             console.log(err);
         })
     }
-}
+},
+created(){
+      let user = fb.auth().currentUser;
+      this.email = user.email;
+
+  }
 };
 </script>
 

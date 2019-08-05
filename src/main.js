@@ -6,6 +6,9 @@ import jQuery from 'jquery';
 import {fb} from './firebase';
 import VueFirestore from 'vue-firestore';
 import Swal from 'sweetalert2';
+import VueCarousel from 'vue-carousel';
+
+Vue.use(VueCarousel);
 
 window.$ = window.jQuery = jQuery;
 
