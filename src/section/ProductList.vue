@@ -16,7 +16,7 @@
                         <div class="card-body">
                           <div class="d-flex justify-content-between">
                             <h5 class="card-title">{{ product.name }}</h5>
-                            <h5 class="card-priceS">{{ product.price }}</h5>
+                            <h5 class="card-priceS">R{{ product.price }}</h5>
 
                           </div>
                            

@@ -14,15 +14,18 @@
       <li class="nav-item">
         <router-link to="/about" class="nav-link" >About</router-link>
       </li>
-     
+    
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <a class="btn btn-outline-success my-2 my-sm-0"  @click="log"  data-toggle="modal" data-target="#profile">My profile</a>
+      <a class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#forgotPassword">Forgot Password</a>
       <a class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login">Sign up/Login</a>
-      <a class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" data-target="#miniCart">Cart</a>
+      <a  style="cursor: pointer" class="fas fa-shopping-cart" data-toggle="modal" data-target="#miniCart">Cart</a>
     </form>
   </div>
   <Login></Login>
+  <forgotPassword></forgotPassword>
+  <profile></profile>
 </nav>
 
     </div>
@@ -31,6 +34,9 @@
 <script>
 import Login from './Login.vue';
 import MiniCart from './MiniCart';
+import forgotPassword from './forgotPassword';
+import profile from './profile';
+import {fb} from '../firebase';
 
 export default {
   name: "Navbar",
@@ -40,6 +46,18 @@ export default {
   components: {
     Login,
     MiniCart,
+    forgotPassword,
+    profile,
+  },
+  methods: {
+    log(){
+      const currentUser = fb.auth().currentUser
+
+      if(!currentUser){
+        alert("You need to be logged in");
+        this.modal = 'hide';
+      }
+    }
   }
 };
 </script>

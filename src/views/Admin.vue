@@ -9,62 +9,7 @@
     
     
     
-                    <!-- sidebar-header  -->
-    
-                    <div class="sidebar-item sidebar-header d-flex flex-nowrap">
-    
-                        <div class="user-pic">
-    
-                            <img class="img-responsive img-rounded" src="img/user.jpg" alt="User picture">
-    
-                        </div>
-    
-                        <div class="user-info">
-    
-                            <span class="user-name">
-                                Name
-                            </span>
-    
-                            <span class="user-role">{{email}}</span>
-    
-                            <span class="user-status">
-    
-                                <i class="fa fa-circle"></i>
-    
-                                <span>Online</span>
-    
-                            </span>
-    
-                        </div>
-    
-                    </div>
-    
-                    <!-- sidebar-search  -->
-    
-                    <div class="sidebar-item sidebar-search">
-    
-                        <div>
-    
-                            <div class="input-group">
-    
-                                <input type="text" class="form-control search-menu" placeholder="Search...">
-    
-                                <div class="input-group-append">
-    
-                                    <span class="input-group-text">
-    
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-    
-                                    </span>
-    
-                                </div>
-    
-                            </div>
-    
-                        </div>
-    
-                    </div>
-    
+                  
                     <!-- sidebar-menu  -->
     
                     <div class=" sidebar-item sidebar-menu">
@@ -192,6 +137,7 @@ export default {
     components: {
         Hero
     },
+    
 methods:{
     logout(){
         fb.auth().signOut()

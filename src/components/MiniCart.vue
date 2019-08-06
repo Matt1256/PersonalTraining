@@ -18,9 +18,9 @@
                       <div class="media-body">
                         <h5 class="mt-0">{{item.productName}}
 
-                          <span class='float-right' @click="$store.commit('removeFromCart',item)">X</span>
+                          <span style="cursor: pointer" class='float-right' @click="$store.commit('removeFromCart',item)">X</span>
                         </h5>
-                        <p class="mt-0">{{item.productPrice}}</p>
+                        <p class="mt-0">R{{item.productPrice}}</p>
                         <p class="mt-0">Quantity : {{item.productQuantity }}</p>
                       </div>
                     </li>

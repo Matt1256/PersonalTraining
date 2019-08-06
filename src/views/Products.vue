@@ -40,7 +40,7 @@
                         </td>
 
                         <td>
-                          {{product.price}}
+                          R{{product.price}}
                         </td>
 
                         <td>

@@ -93,9 +93,21 @@ export default {
     login(){
       fb.auth().signInWithEmailAndPassword(this.email, this.password)
       .then(() => {
-          this.$router.replace('admin');
+
+        if(this.email == 'abrahamsmatthew54@gmail.com' && this.password == '123456'){
+
+          this.$router.replace('admin/products');
           location.reload();
           $('#login').modal('hide');
+
+        } else {
+
+          this.$router.replace('/customer');
+          location.reload();
+          $('#login').modal('hide');
+          
+        }
+        
       })
       
       .catch(function(error) {
