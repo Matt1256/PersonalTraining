@@ -8,11 +8,8 @@
                     <h3>Products Page</h3>
                     
                  <p>
-                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, ducimus.
+                   Pretty much self explanatory
                  </p>
-              </div>
-              <div class="col-md-6">
-                  <img src="/img/svg/products.svg" alt="" class="img-fluid">
               </div>
             </div>
           </div>
@@ -114,7 +111,7 @@
                     <div class="form-group d-flex">
                       <div class="p-1" v-for="(image, index) in product.images">
                           <div class="img-wrapp">
-                              <img :src="images" alt="" width="80px">
+                              <img :src="image" alt="" width="80px">
                               <span class="delete-img" @click="deleteImage(image, index)">X</span>
                           </div>
                       </div>
@@ -200,7 +197,7 @@ export default {
 
     uploadImage(e){
 
-      if(e.target.files[0]){
+     if(e.target.files[0]){
         
           let file = e.target.files[0];
     
@@ -211,15 +208,12 @@ export default {
           uploadTask.on('state_changed', (snapshot) => {
             
           }, (error) => {
-    
+ 
           }, () => {
-   
+
+            
             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-
-              this.product.images = downloadURL;
-
               this.product.images.push(downloadURL);
-
             });
 
           });
@@ -311,7 +305,7 @@ export default {
       db.collection("products").add(this.product)
       .then((docRef) => {
 
-        this.readData();
+       // this.readData();
         $('#product').modal('hide');
 
       })
@@ -325,7 +319,7 @@ export default {
 
   },
   created(){
-    this.readData();
+    //this.readData();
 
   }
 };
