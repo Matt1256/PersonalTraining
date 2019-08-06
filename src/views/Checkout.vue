@@ -38,7 +38,7 @@
                         @change='complete = $event.complete'
                         />
 
-                        <button class='pay-with-stripe btn btn-primary mt-4' @click='pay' :disabled='!complete'>Pay with credit card</button>
+                        <button class='pay-with-stripe btn btn-primary mt-4' @click='pay' :disabled='!complete'>Checkout</button>
                     
                     </form>
                 </div>
@@ -50,12 +50,17 @@
 
 <script>
 
+var stripe = Stripe('pk_test_M5ETDNck8Bw3yE0bJaWsivjM00KIeq1eqU');
+import axios from 'axios';
+
+
 import { Card, createToken } from 'vue-stripe-elements-plus';
 
 
 export default {
     data () {
     return {
+      sessionId: '',
       complete: false,
       stripeOptions: {
         
@@ -68,8 +73,31 @@ export default {
   methods: {
     pay () {
 
+            stripe.redirectToCheckout({
+        // Make the id field from the Checkout Session creation API response
+        // available to this file, so you can provide it as parameter here
+        // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+        sessionId: this.sessionId.id
+      }).then(function (result) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer
+        // using `result.error.message`.
+      });
+
       createToken().then(data => console.log(data.token))
     }
+  },
+
+  created(){
+    axios.post('')
+    .then(response => {
+
+      this.sessionId = response.data
+
+    })
+    .catch(error => {
+      alert("error");
+    });
   }
 }
 </script>
