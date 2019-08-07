@@ -21,6 +21,18 @@
                                 <span>Menu</span>
     
                             </li>
+
+                              <li>
+    
+                                <router-link to="/">
+    
+                                    <i class="fa fa-home"></i>
+    
+                                    <span class="menu-text">Home</span>
+    
+                                </router-link>
+    
+                            </li>
     
 
                             <li>
