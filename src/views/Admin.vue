@@ -22,19 +22,6 @@
     
                             </li>
     
-                            <li>
-    
-                                <router-link to="/admin/Overview">
-    
-                                    <i class="fa fa-tachometer-alt"></i>
-    
-                                    <span class="menu-text">Overview</span>
-    
-                                    
-    
-                                </router-link>
-    
-                            </li>
 
                             <li>
     
@@ -64,17 +51,6 @@
     
                             </li>
     
-                            <li>
-    
-                                <router-link to="/admin/Orders">
-    
-                                    <i class="fa fa-calendar"></i>
-    
-                                    <span class="menu-text">Orders</span>
-    
-                                </router-link>
-    
-                            </li>
 
                             <li>
                                 <a href=# @click="logout()">

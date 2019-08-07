@@ -20,7 +20,7 @@
       <a class="btn btn-outline-success my-2 my-sm-0"  @click="log"  data-toggle="modal" data-target="#profile">My profile</a>
       <a class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#forgotPassword">Forgot Password</a>
       <a class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login">Sign up/Login</a>
-      <a  style="cursor: pointer" class="fas fa-shopping-cart" data-toggle="modal" data-target="#miniCart">Cart</a>
+      <a  style="cursor: pointer" @click="logC" class="fas fa-shopping-cart" data-toggle="modal" data-target="#miniCart">Cart</a>
     </form>
   </div>
   <Login></Login>
@@ -54,10 +54,63 @@ export default {
       const currentUser = fb.auth().currentUser
 
       if(!currentUser){
-        alert("You need to be logged in");
-        this.modal = 'hide';
+        $('#profile').remove();
+        Swal.fire({
+        title: 'You have to be logged in',
+        text: "",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Log me in!'
+
+      }).then((result) => {
+
+        if (result.value) {
+
+          $('#login').modal('show');
+
+          Toast.fire({
+            type: 'success',
+            title: 'Deleted  successfully'
+          })
+     
+        }
+      })
       }
-    }
+    },
+
+    logC(){
+      const currentUser = fb.auth().currentUser
+
+      if(!currentUser){
+
+        $('#miniCart').remove();
+        Swal.fire({
+        title: 'You have to be logged in',
+        text: "",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Log me in!'
+
+      }).then((result) => {
+
+        if (result.value) {
+
+          $('#login').modal('show');
+
+          Toast.fire({
+            type: 'success',
+            title: 'Deleted  successfully'
+          })
+     
+        }
+      })
+      }
+    },
+
   }
 };
 </script>

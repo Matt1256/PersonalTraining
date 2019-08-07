@@ -40,8 +40,9 @@
                         <div class="col-md-4">
                           <div class="form-group">
                               <input type="submit" @click="updateProfile" value="Save Changes" class="btn btn-primary w-100">
-                              <input type="submit" @click="logOut" value="Log Out" class="btn btn-primary w-100">
+                              
                           </div>
+                          <input type="submit" @click="logOut" value="Log Out" class="btn btn-primary w-100">
                         </div>
         </div>
       
@@ -82,7 +83,7 @@ export default {
    updateProfile(){
           this.$firestore.profile.update(this.profile);
           alert("Profile updated");
-          $('#profile').modal('hide');
+          
       },
 
       logOut(){
