@@ -1,12 +1,18 @@
 <template>
-  <div class="AddToCart">
-    <button class="btn btn-primary" @click="addToCart"> Add to Cart </button>
+  <div class="AddToCart" align="left">
+      <button class="btn btn-primary" id="move" @click="view">View</button>
+    <button  class="btn btn-primary" @click="addToCart"> Add to Cart </button>
   </div>
 </template>
 
 <script>
+import description from './Description';
+
 export default {
   name: 'AddToCart',
+  components: {
+      description
+  },
   props: {
     name: String,
     price: String,
@@ -31,6 +37,10 @@ export default {
     addToCart(){
       $('#miniCart').modal('show');
       this.$store.commit('addToCart', this.item)
+    },
+
+    view(){
+      $('#description').modal('show');
     }
 
   }
@@ -38,6 +48,9 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style>
+#move {
+  margin-right: 30%;
+  margin-left: 5%;
+}
 </style>

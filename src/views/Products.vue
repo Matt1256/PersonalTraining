@@ -4,13 +4,6 @@
           
         <div class="intro h-100">
             <div class="row h-100 justify-content-center align-items-center">
-              <div class="col-md-6">
-                    <h3>Products Page</h3>
-                    
-                 <p>
-                   Pretty much self explanatory
-                 </p>
-              </div>
             </div>
           </div>
 

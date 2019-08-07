@@ -20,12 +20,13 @@
 
                           </div>
                            
-                            <AddToCart
+                            <AddToCart 
                                 :image="getImage(product.images)"
                                 :p-id="product.id"
                                 :price="product.price"
                                 :name="product.name">
-                            </AddToCart>
+                            </AddToCart>       
+                            <description></description>     
                         </div>
                     </div>
               </div>
@@ -39,11 +40,13 @@
 <script>
 import {db} from '../firebase';
 import AddToCart from '../components/AddToCart';
+import description from '../components/Description';
 
 export default {
   name: "ProductsList",
   components: {
-      AddToCart
+      AddToCart,
+      description,
   },
   props: {
     msg: String

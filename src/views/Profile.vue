@@ -121,6 +121,14 @@ export default {
 
       updateProfile(){
           this.$firestore.profile.update(this.profile);
+        Swal.fire({
+        title: 'Profile updated',
+        text: "",
+        type: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Okay'
+
+      })
       },
       uploadImage(){}
   },

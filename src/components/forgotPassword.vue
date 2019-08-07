@@ -36,14 +36,31 @@ export default {
 
       methods:{
       resetPassword(){
-          const auth = fb.auth();          
+          const auth = fb.auth();      
+          
+          if(this.email == null || this.email == ''){
+
+            Swal.fire({
+            title: 'Enter an email',
+            type: 'warning',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Okay'
+
+      })
+          }
 
           auth.sendPasswordResetEmail(this.email).then(() =>  {
                alert("Email sent");
                 $('#forgotPassword').modal('hide');
           }).catch((error) =>  {
 
-              console.log(error);
+        Swal.fire({
+        title: 'Email does not exist',
+        type: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Okay'
+
+      })
 
           });
       },
