@@ -1,8 +1,8 @@
 <template>
     <div class="hero">
-        <div class="container h-100">
+        <div class="container h-100" >
           <div class="row h-100 justify-content-center align-items-center">
-            <div class="col-md-5">
+            <div class="col-md-5"  >
               <div class="hero-content">
                 <h1 class="hero-title">
                   
@@ -10,8 +10,12 @@
                 </h1>
                 <p>
                   The goal of our team is to provide quality supplements and training programs in order to better the 
-                  health of consumers in an increasingly unhealthy society                
-                </p>
+                  health of consumers in an increasingly unhealthy society       
+                </p><br>
+                  <p>Contact us: xxx xxx xxxx </p>
+                  <br>
+                  <p>Email: Example@me.com </p>      
+                
                 
               </div>
             </div>
