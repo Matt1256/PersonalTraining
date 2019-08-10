@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="form-group">
-                      <vue-editor v-model="product.description"></vue-editor>
+                      <textarea class="form-control" v-model="product.description"></textarea>
                     </div>
                   </div>
                   <!-- product sidebar -->

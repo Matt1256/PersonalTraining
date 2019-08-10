@@ -17,9 +17,11 @@
                           <div class="d-flex justify-content-between">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <h5 class="card-priceS">R{{ product.price }}</h5>
-
-                          </div>
-                           
+                            
+                          </div><br>
+                            <div align="left">
+                               <h5 class="card-priceS">{{ product.description }}</h5>
+                              </div>
                             <AddToCart 
                                 :image="getImage(product.images)"
                                 :p-id="product.id"
@@ -80,7 +82,7 @@ data(){
 <style scoped lang="scss">
     .products{
         margin-top: 7rem;
-        background: #f2f2f2;
+        background: gray;
         padding-bottom: 3rem;
     }
 </style>
