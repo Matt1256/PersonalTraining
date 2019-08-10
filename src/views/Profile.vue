@@ -19,7 +19,13 @@
                         
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input type="text" name="" v-model="profile.name" placeholder="Full name" class="form-control">
+                            <input type="text" name="" v-model="profile.name" placeholder="Name" class="form-control">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" name="" v-model="profile.surname" placeholder="Surname" class="form-control">
                           </div>
                         </div>
 
@@ -83,6 +89,7 @@ export default {
     return {
         profile: {
           name:null,
+          surname:null,
           phone:null,
           address:null,
           postcode:null

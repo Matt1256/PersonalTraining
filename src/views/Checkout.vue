@@ -14,10 +14,10 @@
                         <div class="media-body">
                             <h5 class="mt-0">{{item.productName}}
 
-                                <span class='float-right' @click="$store.commit('removeFromCart',item)">X</span>
+                                <span style="cursor: pointer" class='float-right' @click="$store.commit('removeFromCart',item)">X</span>
 
                             </h5>
-                            <p class="mt-0">{{item.productPrice | currency}}</p>
+                            <p class="mt-0">R{{item.productPrice}}</p>
                             <p class="mt-0">Quantity : {{item.productQuantity }}</p>
                         </div>
                         </li>
@@ -26,19 +26,11 @@
                 </div>
                 <div class="col-md-4">
                     <p>
-                        Total Price : {{ this.$store.getters.totalPrice | currency }}
+                        Total Price : R{{ this.$store.getters.totalPrice }}
                     </p>
 
-                   
 
-                    <card class='stripe-card'
-                        :class='{ complete }'
-                        stripe='pk_test_XXXXXXXXXXXXXXXXXXXXXXXX'
-                        :options='stripeOptions'
-                        @change='complete = $event.complete'
-                        />
-
-                        <button class='pay-with-stripe btn btn-primary mt-4' @click='pay' :disabled='!complete'>Checkout</button>
+                        <button class='pay-with-stripe btn btn-primary mt-4' @click="pay">Checkout</button>
                     
                     </form>
                 </div>
@@ -61,7 +53,6 @@ export default {
     data () {
     return {
       sessionId: '',
-      complete: false,
       stripeOptions: {
         
       }
@@ -72,8 +63,7 @@ export default {
 
   methods: {
     pay () {
-
-            stripe.redirectToCheckout({
+stripe.redirectToCheckout({
         // Make the id field from the Checkout Session creation API response
         // available to this file, so you can provide it as parameter here
         // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
@@ -83,23 +73,21 @@ export default {
         // error, display the localized error message to your customer
         // using `result.error.message`.
       });
-
       createToken().then(data => console.log(data.token))
-    }
+    
+  }
   },
-
   created(){
     axios.post('')
     .then(response => {
-
       this.sessionId = response.data
-
     })
     .catch(error => {
       alert("error");
     });
-  }
 }
+}
+  
 </script>
 
 

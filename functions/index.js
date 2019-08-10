@@ -1,10 +1,10 @@
 const functions = require('firebase-functions');
 const stripe = require('stripe')('sk_test_UwNeBb1ZkCVnONyyTTYBDO4G00BHVieNU7');
-const cars = require('cars')({origin: true});
+const cors = require('cors')({origin: true});
 
 exports.CheckoutSession = functions.https.onRequest((request, response) => {
 
-  cars(request, response, () => {
+  cors(request, response, () => {
 
     stripe.checkout.sessions.create({
       success_url: "https://example.com/success",

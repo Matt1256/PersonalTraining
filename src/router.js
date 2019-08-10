@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Admin from "./views/Admin.vue";
-import Overview from "./views/Overview.vue";
+import Users from "./views/Users.vue";
 import Products from "./views/Products.vue";
 import Orders from "./views/Orders.vue";
 import Logout from "./views/Logout.vue";
@@ -27,9 +27,9 @@ const router = new Router({
       meta: {requireAuth: true},
 
       children:[{
-        path: "Overview",
-        name: "Overview",
-        component: Overview
+        path: "Users",
+        name: "Users",
+        component: Users
         },
 
         {

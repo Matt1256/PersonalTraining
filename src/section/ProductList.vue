@@ -24,9 +24,10 @@
                                 :image="getImage(product.images)"
                                 :p-id="product.id"
                                 :price="product.price"
-                                :name="product.name">
+                                :name="product.name"
+                                @click="log">
                             </AddToCart>       
-                            <description></description>     
+                                
                         </div>
                     </div>
               </div>
@@ -63,7 +64,7 @@ data(){
 
     getImage(images){
       return images[0];
-    }
+    },
 
   },
 

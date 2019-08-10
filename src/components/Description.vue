@@ -1,58 +1,60 @@
 <template>
   <div class="description">
-   
-        <!-- Modal -->
-        <div class="modal fade" id="description" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">My Bag</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                  <ul>
-                    <li v-for="item in this.$store.state.cart" class="media">
-                      <img :src="item.productImage" width="80px" class="align-self-center mr-3" alt="">
-                      <div class="media-body">
-                        <h5 class="mt-0">{{item.productName}}
 
-                          <span style="cursor: pointer" class='float-right' @click="$store.commit('removeFromCart',item)">X</span>
-                        </h5>
-                        <p class="mt-0">R{{item.productPrice}}</p>
-                        <p class="mt-0">Quantity : {{item.productQuantity }}</p>
-                      </div>
-                    </li>
-
-                  </ul>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue Shopping</button>
-                <button type="button" class="btn btn-primary" @click="checkout">Checkout</button>
-              </div>
-            </div>
-          </div>
-        </div>
+   <div class="modal" id="description" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header"  v-for="product in products">
+          <h5 class="modal-title">{{product.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{product.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     
   </div>
 </template>
 
 <script>
+
+import { fb, db } from '../firebase';
+
 export default {
   name: "description",
   props: {
     msg: String
   },
-  methods:{
 
-    checkout(){
-      $('#miniCart').modal('hide')
-      this.$router.push('/Checkout')  
+  data(){
+    return {
+        products: [],
+        product: {
+          name:null,
+          description:null,
+          price:null,
+          tags:[],
+          images:[]
+        },
+        activeItem:null,
+        modal: null,
+        tag: null
     }
+  },
 
-  }
+   firestore(){
+      return {
+        products: db.collection('products'),
+      }
+  },
 };
 </script>
 

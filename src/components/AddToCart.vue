@@ -1,12 +1,12 @@
 <template>
   <div class="AddToCart" align="left">
-      <button class="btn btn-primary" id="move" @click="view">View</button>
     <button  class="btn btn-primary" @click="addToCart"> Add to Cart </button>
   </div>
 </template>
 
 <script>
 import description from './Description';
+import {fb} from '../firebase';
 
 export default {
   name: 'AddToCart',
@@ -35,13 +35,32 @@ export default {
 
    methods:{
     addToCart(){
+      const currentUser = fb.auth().currentUser;
+      if(!currentUser){
+        Swal.fire({
+        title: 'You have to be logged in',
+        text: "",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Log me in!'
+
+        }).then((result) => {
+
+          if(result.value){
+            $('#login').modal('show');
+          }
+
+        })
+      } else {
+
       $('#miniCart').modal('show');
       this.$store.commit('addToCart', this.item)
+      }
+      
     },
 
-    view(){
-      $('#description').modal('show');
-    }
 
   }
 };

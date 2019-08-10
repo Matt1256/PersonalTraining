@@ -33,6 +33,18 @@
                                 </router-link>
     
                             </li>
+
+                             <li>
+    
+                                <router-link to="/admin/Users">
+    
+                                    <i class="fa fa-users"></i>
+    
+                                    <span class="menu-text">Users</span>
+    
+                                </router-link>
+    
+                            </li>
     
 
                             <li>
